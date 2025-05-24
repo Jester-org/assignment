@@ -2,10 +2,23 @@
   "name": "Laravel Dev",
   "image": "mcr.microsoft.com/devcontainers/php:8.2",
   "features": {
-    "ghcr.io/devcontainers/features/php-mysql:1": {
-      "version": "8.0",
-      "init": true
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.2"
     }
   },
-  "postCreateCommand": "docker-php-ext-install pdo pdo_mysql && composer install && cp .env.example .env && php artisan key:generate"
+  "postCreateCommand": "docker-php-ext-install pdo_sqlite && composer install && cp .env.example .env && php artisan key:generate && touch database/database.sqlite && php artisan migrate",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "xdebug.php-debug",
+        "bmewburn.vscode-intelephense-client"
+      ]
+    }
+  },
+  "portsAttributes": {
+    "8000": {
+      "label": "Laravel Development Server",
+      "onAutoForward": "openPreview"
+    }
+  }
 }
