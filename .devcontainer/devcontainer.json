@@ -1,0 +1,11 @@
+{
+  "name": "Laravel Dev",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2",
+  "features": {
+    "ghcr.io/devcontainers/features/php-mysql:1": {
+      "version": "8.0",
+      "init": true
+    }
+  },
+  "postCreateCommand": "docker-php-ext-install pdo pdo_mysql && composer install && cp .env.example .env && php artisan key:generate"
+}
