@@ -6,7 +6,7 @@
       "version": "8.2"
     }
   },
-  "postCreateCommand": "docker-php-ext-install pdo_sqlite && composer install && cp .env.example .env && php artisan key:generate && touch database/database.sqlite && php artisan migrate",
+  "postCreateCommand": "docker-php-ext-install pdo_sqlite && composer install && cp .env.example .env && php artisan key:generate && touch database/database.sqlite && php artisan migrate --seed",
   "customizations": {
     "vscode": {
       "extensions": [
